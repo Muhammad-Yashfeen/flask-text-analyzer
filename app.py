@@ -20,21 +20,25 @@ def post():
          return render_template('post.html', name = name, title = name)
     if request.method =='POST':
         content = request.form['content']
-        char_count = len(content)
-        word_count = len(content.split())
-        lst = content.split()
-        dct = {}
-        for word in lst:
-            if word in dct:
-                dct[word] += 1
-            else:
-                dct[word] = 1
-        tup_dct = dct.items()
-        sorted_words = sorted(tup_dct, key= lambda x : x[1], reverse = True)
-        most_frequent_word = sorted_words[0][0]
-        setis = set(lst)
-        variety = (len(setis) / len(lst)) * 100
-        return render_template('result.html', char_count = char_count, word_count = word_count, most_frequent_word = most_frequent_word, variety = variety, sorted_words = sorted_words)
+        if not content.strip():
+            message = 'Please enter some text to analyze.'
+            return render_template('post.html', name=name, title = name, message = message)
+        else:
+            char_count = len(content)
+            lst = content.split()
+            word_count = len(lst)
+            dct = {}
+            for word in lst:
+                if word in dct:
+                    dct[word] += 1
+                else:
+                    dct[word] = 1
+            tup_dct = dct.items()
+            sorted_words = sorted(tup_dct, key= lambda x : x[1], reverse = True)
+            most_frequent_word = sorted_words[0][0]
+            unique_words = set(lst)
+            variety = (len(unique_words) / len(lst)) * 100
+            return render_template('result.html', char_count = char_count, word_count = word_count, most_frequent_word = most_frequent_word, variety = variety, sorted_words = sorted_words)
 
 if __name__ == '__main__':
     port = int(os.environ.get("PORT", 5000))
