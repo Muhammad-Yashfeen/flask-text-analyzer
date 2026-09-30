@@ -1,0 +1,65 @@
+
+{% extends 'layout.html' %}
+
+{% block content %}
+
+<div class="container">
+
+    <h1>Feedback</h1>
+
+    {% if message %}
+        <p>{{ message }}</p>
+    {% endif %}
+
+    <p>Enter your review:</p>
+
+    <form action="{{ url_for('feedback') }}" method="POST">
+
+        <p>Enter your name:</p>
+        <div>
+            <input type="text" name="name">
+        </div>
+
+        <p>Enter your Email address:</p>
+        <div>
+            <input type="email" name="email">
+        </div>
+
+        <p>Enter Feedback:</p>
+        <div>
+            <textarea rows="6" name="feedback" autofocus></textarea>
+        </div>
+
+        <div>
+            <input type="submit" class="btn" value="Submit Feedback">
+        </div>
+
+    </form>
+
+</div>
+
+
+<div>
+
+    <p>Previous reviews:</p>
+
+    {% for feedback in feedbacks %}
+
+        <div class="feedback-card">
+
+            <p>Name: {{ feedback.name }}</p>
+
+            <p>Feedback: {{ feedback.feedback }}</p>
+
+            <p>
+                Created:
+                {{ feedback.created_at.strftime('%B %d, %Y at %I:%M %p') }}
+            </p>
+
+        </div>
+
+    {% endfor %}
+
+</div>
+
+{% endblock %}

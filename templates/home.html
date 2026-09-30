@@ -1,21 +1,30 @@
+
 {% extends 'layout.html' %}
 
 {% block content %}
 <div class="container">
-    <h1>Welcome to Text Analyzer</h1>
-    <p>
-  This is a beginner-friendly Flask web application built to analyze text.
-  It calculates the number of words and characters, finds the most frequent
-  words, and measures word variety in the text. Check it out by clicking
-  <strong>Text Analyzer</strong> in the menu. You need the following
-  technologies to build this web application:
-</p>
 
+    <h1>Welcome to Text Analyzer</h1>
+
+    <p>
+        Text Analyzer is a Flask web application that helps you explore and
+        understand your text. It calculates word and character counts, finds
+        the most frequent words, and measures word variety. Your analyses are
+        saved to MongoDB so you can view them later through the History page.
+        The application also provides a REST API that allows analyses to be
+        created, viewed, updated, and deleted.
+    </p>
+
+    <p>
+        This application was built using the following technologies:
+    </p>
 
     <ul class="tech-lists">
         {% for tech in techs %}
-            <li class="tech">{{tech}}</li>
+            <li class="tech">{{ tech }}</li>
         {% endfor %}
     </ul>
+
 </div>
 {% endblock %}
+

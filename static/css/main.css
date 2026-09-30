@@ -98,3 +98,46 @@ th {
   background: #333;
   color: white;
 }
+
+.history-card {
+  background: #f7f7f7;
+  padding: 20px;
+  margin-top: 20px;
+  border-radius: 8px;
+  border: 1px solid #ddd;
+}
+
+.history-card h2 {
+  margin-top: 0;
+}
+
+.history-card p {
+  margin: 8px 0;
+}
+
+.feedback-card {
+  background: #f7f7f7;
+  padding: 20px;
+  margin-top: 20px;
+  border-radius: 8px;
+  border: 1px solid #ddd;
+}
+
+.feedback-card p {
+  margin: 8px 0;
+}
+
+.feedback-card p:first-child {
+  font-weight: bold;
+}
+
+.feedback-card p:nth-child(2) {
+  margin-top: 15px;
+  line-height: 1.6;
+}
+
+.feedback-card p:last-child {
+  font-size: 14px;
+  color: #777;
+}
+

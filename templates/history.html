@@ -1,0 +1,38 @@
+{% extends 'layout.html' %}
+
+{% block content %}
+
+<div class="container">
+
+<h1>Analysis History</h1>
+
+{% for analysis in analyses %}
+
+<div class="history-card">
+
+    <h2>Saved Analysis</h2>
+
+    <p><strong>Created:</strong> {{ analysis.created_at.strftime('%B %d, %Y at %I:%M %p') }}</p>
+
+    <p><strong>Text:</strong></p>
+    <p>{{ analysis.text }}</p>
+
+    <p><strong>Words:</strong> {{ analysis.word_count }}</p>
+
+    <p><strong>Characters:</strong> {{ analysis.character_count }}</p>
+
+    <p><strong>Most frequent word:</strong> {{ analysis.most_frequent_word }}</p>
+
+    <p><strong>Word variety:</strong> {{ "%.1f"|format(analysis.word_variety) }}%</p>
+
+</div>
+
+{% else %}
+
+<p>No saved analyses yet.</p>
+
+{% endfor %}
+
+</div>
+
+{% endblock %}
