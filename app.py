@@ -4,7 +4,7 @@ import os
 import pymongo
 from datetime import datetime
 from bson.objectid import ObjectId
-mongodb_uri = 'mongodb+srv://yashfeenaliskills_db_user:YaAK1234@python.lk5ulld.mongodb.net/?appName=python'
+mongodb_uri = os.environ.get('MONGODB_URI')
 client = pymongo.MongoClient(mongodb_uri)
 db = client['Text_Analyzer']
 analyses = db.analyses
